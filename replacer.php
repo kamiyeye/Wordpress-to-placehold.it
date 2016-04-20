@@ -88,7 +88,10 @@ if( isset( $_POST['submit'] ) ) {
 		// Show some stats
 		echo '<tr><td>' . $counter . ' / ' . $urls_count . '</td><td>' . $url . '</td><td>' . ($link . '/' . $placeholdit_new_file) . '</td></tr>';
 
-		$content = str_replace($url, $link . '/' . $placeholdit_new_file, $content);
+		$path = str_replace($link, '', $url);
+		$search = array($url, $path);
+		$replace = array($link . '/' . $placeholdit_new_file, '/' . $placeholdit_new_file);
+		$content = str_replace($search, $replace, $content);
 
 		flush();
 		ob_flush();
